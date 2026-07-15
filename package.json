@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/bhumikasharma25/Learn-React/issues"
   },
-  "homepage": "https://github.com/bhumikasharma25/Learn-React#readme"
+  "homepage": "https://github.com/bhumikasharma25/Learn-React#readme",
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
 }
