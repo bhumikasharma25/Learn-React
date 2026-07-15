@@ -1,0 +1,20 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "Learning React from Namaste ",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhumikasharma25/Learn-React.git"
+  },
+  "keywords": [],
+  "author": "\"ISC\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhumikasharma25/Learn-React/issues"
+  },
+  "homepage": "https://github.com/bhumikasharma25/Learn-React#readme"
+}
