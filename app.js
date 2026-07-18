@@ -1,26 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-/* <div id="parent">
-        <div id="child1">
-            <h1>Hi i'm h1 tag</h1>
-            <h2>Hi i'm h2 tag</h2>
-        </div>
-        <div id="child2">
-            <h1>Hi i'm h1 tag</h1>
-            <h2>Hi i'm h2 tag</h2>
-        </div>
-    </div> */
+//React Element
+const heading = React.createElement("h1",{},"Namaste React");
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
 
+//JSX
 
-    const parent = React.createElement("div",{id:"parent"},
-        [React.createElement("div",{id:"child1",key:"child1"},
-            [React.createElement("h1",{key:"h1"},"This is Namaste React"),
-                React.createElement("h2",{key:"h2"},"My name is Bhumika Sharma")]
-        ),
-        React.createElement("div",{id:"child2",key:"child2"},
-            [React.createElement("h1",{key:"h1"},"Hi i'm h1 tag"),
-                React.createElement("h2",{key:"h2"},"Hi i'm h2 tag")])]
-    );
+const Title = () => (<h1 id="heading" tabIndex="5">Namaste React from JSX</h1>);
+const number = 10000;
 
-    const root = ReactDOM.createRoot(document.getElementById("root"));
-    root.render(parent);
+//React Component
+const HeadingComponent = () => (
+    <div id="container">
+        <Title />
+        <h1 className="heading">{number} Functional Component</h1>
+    </div>
+);
+root.render(<HeadingComponent/>);
