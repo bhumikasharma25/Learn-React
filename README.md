@@ -1,0 +1,663 @@
+ # React Ep 05
+ we have two types of export
+ 1. default export - only one default export can be used.
+ 2. named export - import {CDN_URL} from "fbgegege" -->> this how u import named export.
+
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+:root{
+
+    --bg:#0A0A0F;
+
+    --card:#14141D;
+    --card-hover:#1B1B28;
+
+    --text:#FFFFFF;
+    --secondary:#A7A7B3;
+
+    --pink:#FF4ECD;
+    --violet:#7C5CFF;
+    --yellow:#FFD43B;
+    --blue:#4DA6FF;
+
+    --border:#2A2A3A;
+
+    --success:#22C55E;
+    --danger:#EF4444;
+
+    --gradient:linear-gradient(135deg,var(--violet),var(--pink));
+    --gradient2:linear-gradient(90deg,var(--violet),var(--pink),var(--yellow));
+
+    --shadow:0 15px 35px rgba(124,92,255,.25);
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+    font-family:inherit;
+}
+
+ul{
+    list-style:none;
+}
+
+.courses-page{
+    display:flex;
+    min-height:100vh;
+}
+
+/* Navbar */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 75px;
+  padding: 0 28px;
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.2rem;
+}
+
+.logo::before {
+  content: "E";
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--violet), var(--pink));
+  border-radius: 13px;
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--violet) 30%, transparent);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-pic,
+.avatar {
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--violet), var(--blue));
+  border: 2px solid var(--border);
+  border-radius: 50%;
+}
+
+.profile-pic {
+  width: 38px;
+  height: 38px;
+}
+
+.student-name {
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.student-email {
+  font-size: 0.82rem;
+}
+
+.menu-toggle {
+  display: none;
+  width: 40px;
+  min-width: 40px;
+  padding: 0;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: var(--top-nav-height);
+  left: 0;
+  z-index: 15;
+  width: 250px;
+  height: 100%;
+  padding: 24px 18px;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+}
+
+.sidebar nav ul {
+  display: grid;
+  gap: 8px;
+  margin-top: 85px;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 14px;
+  color: var(--secondary);
+  font-weight: 650;
+  border-radius: 14px;
+  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  color: var(--text);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--violet) 22%, transparent), color-mix(in srgb, var(--pink) 14%, transparent));
+  transform: translateX(3px);
+}
+
+
+.main-content{
+
+    margin-left:240px;
+    margin-top:75px;
+
+    width:100%;
+
+    padding:35px;
+
+}
+
+
+.course-controls{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    margin-bottom:40px;
+
+}
+
+.search-box{
+
+    flex:1;
+    min-width:280px;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    padding:15px 18px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    color:white;
+
+    font-size:1rem;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.search-box input:focus{
+
+    border-color:var(--violet);
+
+    box-shadow:0 0 0 4px rgba(124,92,255,.2);
+
+}
+
+.filter-buttons{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+
+}
+
+.filter-btn{
+
+    padding:12px 22px;
+
+    background:var(--card);
+
+    color:var(--secondary);
+
+    border:1px solid var(--border);
+
+    border-radius:30px;
+
+    transition:.3s;
+
+}
+
+.filter-btn:hover{
+
+    background:var(--card-hover);
+
+    color:white;
+
+}
+
+.filter-btn.active{
+
+    background:var(--gradient);
+
+    color:white;
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ==========================
+   COURSES GRID
+========================== */
+
+.courses-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+
+    gap:28px;
+
+}
+
+/* ==========================
+   COURSE CARD
+========================== */
+
+.course-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.course-card:hover{
+
+    transform:translateY(-8px);
+
+    background:var(--card-hover);
+
+    box-shadow:var(--shadow);
+
+}
+
+.course-image{
+
+    width:100%;
+    height:180px;
+
+    object-fit:cover;
+
+}
+
+.course-content{
+
+    padding:22px;
+
+}
+
+.course-title{
+
+    font-size:1.2rem;
+    font-weight:600;
+
+    margin-bottom:10px;
+
+}
+
+.course-description{
+
+    color:var(--secondary);
+
+    line-height:1.6;
+
+    font-size:.92rem;
+
+    margin-bottom:18px;
+
+}
+
+.course-meta{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.status{
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+}
+
+.completed{
+
+    background:rgba(34,197,94,.15);
+
+    color:var(--success);
+
+}
+
+.progress{
+
+    background:rgba(77,166,255,.15);
+
+    color:var(--blue);
+
+}
+
+.not-started{
+
+    background:rgba(239,68,68,.15);
+
+    color:var(--danger);
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:8px;
+
+    background:#222230;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    background:var(--gradient);
+
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.course-btn{
+
+    width:100%;
+
+    margin-top:18px;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    background:var(--gradient);
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.course-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--violet);
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:var(--bg);
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:900px){
+
+    .sidebar{
+
+        width:210px;
+
+    }
+
+    .main-content{
+
+        margin-left:210px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .sidebar{
+
+        transform:translateX(-100%);
+        transition:.35s;
+
+    }
+
+    .sidebar.show{
+
+        transform:translateX(0);
+
+    }
+
+    .main-content{
+
+        margin-left:0;
+
+    }
+
+    .top-nav{
+
+        padding:0 20px;
+
+    }
+
+    .course-controls{
+
+        flex-direction:column;
+        align-items:stretch;
+
+    }
+
+    .filter-buttons{
+
+        justify-content:center;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    .courses-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .profile{
+
+        display:none;
+
+    }
+
+    .logo{
+
+        font-size:1.4rem;
+
+    }
+
+}
+
+
+
+//HTML
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="courses.css">
+    <title>Courses</title>
+</head>
+<body>
+    <main class="courses-page">
+        <header class="top-nav">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open sidebar">☰</button>
+    <h1 class="logo">EduTrack</h1>
+
+    <div class="profile">
+      <img class="profile-pic" id="navAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='60' fill='%237C5CFF'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' fill='white' font-family='Arial' font-size='34' font-weight='700'%3EST%3C/text%3E%3C/svg%3E" alt="Student avatar">
+      <div>
+        <p class="student-name" id="navStudentName">Student</p>
+        <p class="student-email" id="navStudentEmail">Loading...</p>
+      </div>
+    </div>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <nav class="sidebar-nav">
+      <ul class="nav-menu">
+        <li><a href="dashboard.html" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="courses.html"><i class="fa-solid fa-book-open"></i> My Courses</a></li>
+        <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+      </ul>
+      <ul class="nav-logout">
+        <li><a href="#" id="sidebarLogout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+   
+   
+<div class="main-content">
+
+<section class="course-controls">
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search courses..."
+        >
+    </div>
+    
+
+    <div class="filter-buttons">
+
+        <button class="filter-btn active" data-filter="All">
+            All
+        </button>
+
+        <button class="filter-btn" data-filter="Completed">
+            Completed
+        </button>
+
+        <button class="filter-btn" data-filter="In Progress">
+            In Progress
+        </button>
+
+        <button class="filter-btn" data-filter="Not Started">
+            Not Started
+        </button>
+
+    </div>
+
+</section>
+
+   
+    <section class="courses-grid">
+
+
+    </section>
+</div>
+
+</main>
+
+
+<script type="module" src="courses.js"></script>
+</body>
+</html>

@@ -33,7 +33,7 @@ input {
     flex-wrap: wrap;
     margin: 3px;
     padding: 5px;
-    gap: 10;
+    gap: 5;
 
 }
 
@@ -41,12 +41,25 @@ input {
 .res-card{
     border: 2px solid black;
     width: 250px;
+    padding: 10px;
+    
     
 }
 
 .food-img{
     width:250px;
-    height: 150px;
+    height: 200px;
+    
+}
+.filter{
+    margin: 15px;
+}
+.filter-btn{
+    padding: 15px;
+    font-weight: bold;
+    background-color: rgb(80, 170, 255);
+    border-radius: 10px;
+    border: none;
 }
 
 

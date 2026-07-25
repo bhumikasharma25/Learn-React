@@ -1,0 +1,291 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {Header} from "./components/Header";
+import Body from "./components/Body";
+
+//Restraunt Data
+
+const resList = [
+    
+  {
+    "id": 1,
+    "name": "Burger Hub",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
+    "cuisine": ["Burgers", "Fast Food", "American"],
+    "rating": 4.5,
+    "deliveryTime": "25-30 mins",
+    "priceForTwo": "₹400 for two",
+    "location": "Sector 62, Noida",
+    "distance": "1.2 km",
+    "offer": "50% OFF up to ₹100",
+    "isVeg": false
+  },
+  {
+    "id": 2,
+    "name": "Pizza Palace",
+    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600",
+    "cuisine": ["Pizza", "Italian"],
+    "rating": 4.3,
+    "deliveryTime": "30-35 mins",
+    "priceForTwo": "₹600 for two",
+    "location": "Sector 18, Noida",
+    "distance": "2.8 km",
+    "offer": "Flat ₹125 OFF",
+    "isVeg": true
+  },
+  {
+    "id": 3,
+    "name": "Spice Junction",
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600",
+    "cuisine": ["North Indian", "Biryani"],
+    "rating": 4.6,
+    "deliveryTime": "35-40 mins",
+    "priceForTwo": "₹550 for two",
+    "location": "Sector 76, Noida",
+    "distance": "3.1 km",
+    "offer": "20% OFF",
+    "isVeg": false
+  },
+  {
+    "id": 4,
+    "name": "Chinese Wok",
+    "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600",
+    "cuisine": ["Chinese", "Asian"],
+    "rating": 4.2,
+    "deliveryTime": "20-25 mins",
+    "priceForTwo": "₹450 for two",
+    "location": "Sector 137, Noida",
+    "distance": "1.5 km",
+    "offer": "Free Delivery",
+    "isVeg": false
+  },
+  {
+    "id": 5,
+    "name": "South Treat",
+    "image": "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=600",
+    "cuisine": ["South Indian", "Breakfast"],
+    "rating": 4.7,
+    "deliveryTime": "15-20 mins",
+    "priceForTwo": "₹300 for two",
+    "location": "Sector 50, Noida",
+    "distance": "900 m",
+    "offer": "₹75 OFF",
+    "isVeg": true
+  },
+  {
+    "id": 6,
+    "name": "The Dessert House",
+    "image": "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600",
+    "cuisine": ["Desserts", "Ice Cream"],
+    "rating": 4.8,
+    "deliveryTime": "18-22 mins",
+    "priceForTwo": "₹350 for two",
+    "location": "Sector 75, Noida",
+    "distance": "1.7 km",
+    "offer": "Buy 1 Get 1",
+    "isVeg": true
+  },
+  {
+    "id": 7,
+    "name": "Punjabi Dhaba",
+    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=600",
+    "cuisine": ["North Indian", "Punjabi"],
+    "rating": 4.4,
+    "deliveryTime": "35 mins",
+    "priceForTwo": "₹500 for two",
+    "location": "Sector 22, Noida",
+    "distance": "4.3 km",
+    "offer": "40% OFF",
+    "isVeg": false
+  },
+  {
+    "id": 8,
+    "name": "Sushi World",
+    "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600",
+    "cuisine": ["Japanese", "Sushi"],
+    "rating": 4.6,
+    "deliveryTime": "40-45 mins",
+    "priceForTwo": "₹900 for two",
+    "location": "Sector 104, Noida",
+    "distance": "5 km",
+    "offer": "₹150 OFF",
+    "isVeg": false
+  },
+  {
+    "id": 9,
+    "name": "Healthy Bowl",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600",
+    "cuisine": ["Healthy Food", "Salads"],
+    "rating": 4.5,
+    "deliveryTime": "22 mins",
+    "priceForTwo": "₹450 for two",
+    "location": "Sector 137, Noida",
+    "distance": "2.2 km",
+    "offer": "Free Healthy Drink",
+    "isVeg": true
+  },
+  {
+    "id": 10,
+    "name": "Roll Nation",
+    "image": "https://images.unsplash.com/photo-1511689660979-10d2b1aada49?w=600",
+    "cuisine": ["Rolls", "Street Food"],
+    "rating": 4.3,
+    "deliveryTime": "20 mins",
+    "priceForTwo": "₹250 for two",
+    "location": "Sector 16, Noida",
+    "distance": "1.8 km",
+    "offer": "30% OFF",
+    "isVeg": false
+  },
+  {
+    id: 11,
+    name: "Biryani Blues",
+    image: "https://images.unsplash.com/photo-1563379091339-03246963d51a?w=600",
+    cuisine: ["Biryani", "Mughlai"],
+    rating: 4.7,
+    deliveryTime: "28-33 mins",
+    priceForTwo: "₹550 for two",
+    location: "Sector 137, Noida",
+    distance: "2.5 km",
+    offer: "Flat ₹150 OFF",
+    isVeg: false
+},
+{
+    id: 12,
+    name: "Domino's Pizza",
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600",
+    cuisine: ["Pizza", "Italian", "Fast Food"],
+    rating: 4.4,
+    deliveryTime: "20-25 mins",
+    priceForTwo: "₹600 for two",
+    location: "Sector 18, Noida",
+    distance: "1.9 km",
+    offer: "Buy 1 Get 1",
+    isVeg: true
+},
+{
+    id: 13,
+    name: "KFC",
+    image: "https://images.unsplash.com/photo-1562967916-eb82221dfb36?w=600",
+    cuisine: ["Chicken", "Burgers", "Fast Food"],
+    rating: 4.3,
+    deliveryTime: "22-28 mins",
+    priceForTwo: "₹650 for two",
+    location: "Sector 76, Noida",
+    distance: "2.1 km",
+    offer: "20% OFF",
+    isVeg: false
+},
+{
+    id: 14,
+    name: "Wow! Momo",
+    image: "https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=600",
+    cuisine: ["Momos", "Chinese", "Snacks"],
+    rating: 4.5,
+    deliveryTime: "18-24 mins",
+    priceForTwo: "₹350 for two",
+    location: "Sector 62, Noida",
+    distance: "1.4 km",
+    offer: "₹100 OFF",
+    isVeg: false
+},
+{
+    id: 15,
+    name: "Subway",
+    image: "https://images.unsplash.com/photo-1553909489-cd47e0907980?w=600",
+    cuisine: ["Healthy", "Sandwiches"],
+    rating: 4.2,
+    deliveryTime: "19-25 mins",
+    priceForTwo: "₹450 for two",
+    location: "Sector 50, Noida",
+    distance: "2 km",
+    offer: "Free Cookie",
+    isVeg: true
+},
+{
+    id: 16,
+    name: "The Belgian Waffle Co.",
+    image: "https://images.unsplash.com/photo-1562440499-64c9a111f713?w=600",
+    cuisine: ["Desserts", "Waffles"],
+    rating: 4.8,
+    deliveryTime: "15-20 mins",
+    priceForTwo: "₹300 for two",
+    location: "Sector 104, Noida",
+    distance: "1.1 km",
+    offer: "30% OFF",
+    isVeg: true
+},
+{
+    id: 17,
+    name: "Barbeque Nation",
+    image: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600",
+    cuisine: ["BBQ", "North Indian"],
+    rating: 4.6,
+    deliveryTime: "40-45 mins",
+    priceForTwo: "₹1200 for two",
+    location: "Sector 18, Noida",
+    distance: "4.5 km",
+    offer: "₹200 OFF",
+    isVeg: false
+},
+{
+    id: 18,
+    name: "Haldiram's",
+    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600",
+    cuisine: ["North Indian", "South Indian", "Snacks"],
+    rating: 4.5,
+    deliveryTime: "25 mins",
+    priceForTwo: "₹500 for two",
+    location: "Sector 63, Noida",
+    distance: "3.2 km",
+    offer: "15% OFF",
+    isVeg: true
+},
+{
+    id: 19,
+    name: "Taco Bell",
+    image: "https://images.unsplash.com/photo-1565299585323-38174c4a6471?w=600",
+    cuisine: ["Mexican", "Wraps"],
+    rating: 4.3,
+    deliveryTime: "24 mins",
+    priceForTwo: "₹550 for two",
+    location: "Sector 18, Noida",
+    distance: "2.8 km",
+    offer: "Flat ₹125 OFF",
+    isVeg: false
+},
+{
+    id: 20,
+    name: "Cafe Coffee Day",
+    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600",
+    cuisine: ["Coffee", "Beverages", "Cafe"],
+    rating: 4.4,
+    deliveryTime: "18 mins",
+    priceForTwo: "₹400 for two",
+    location: "Sector 135, Noida",
+    distance: "1.6 km",
+    offer: "Free Brownie",
+    isVeg: true
+}
+
+]
+
+//Restraunt Card
+
+
+
+//AppLayout to Render
+const AppLayout = () => {
+    return <div className="app">
+        <Header />
+        <Body />
+    </div>;
+}
+
+
+
+
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<AppLayout/>);
